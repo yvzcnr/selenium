@@ -17,7 +17,7 @@ import java.util.Set;
 
 
 public class class6Hw2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://accounts.google.com/InteractiveLogin/identifier?service=mail&ifkv=AYZoVhe8sjRyK69zjhyrKC5LG5sNdz9td2XTZBQjB5FY7zERoEu4jFR1-NQhLimpHCQ9Psy8OIcC&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
@@ -32,7 +32,7 @@ public class class6Hw2 {
 
         WebElement termsBtn = driver.findElement(By.xpath("//a[text()='Şartlar']"));
 
-
+     String mainWindow=driver.getWindowHandle();
         helpBtn.click();
         privacyBtn.click();
         termsBtn.click();
@@ -53,22 +53,13 @@ public class class6Hw2 {
         }
         System.out.println(driver.getCurrentUrl());
         System.out.println(driver.getTitle());
-        Set<String> allHandles2 = driver.getWindowHandles();
 
 
-        for (String handle : allHandles2) {
-
-            driver.switchTo().window(handle);
-
-            String title = driver.getTitle();
-
-
-            if (title.equalsIgnoreCase("Gmail")) {
-                break;
-            }
-        }
+        driver.switchTo().window(mainWindow);
+        Thread.sleep(2000);
         System.out.println(driver.getCurrentUrl());
         System.out.println(driver.getTitle());
+        driver.quit();
 
 
     }
