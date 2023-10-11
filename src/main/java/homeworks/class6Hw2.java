@@ -32,7 +32,7 @@ public class class6Hw2 {
 
         WebElement termsBtn = driver.findElement(By.xpath("//a[text()='Şartlar']"));
 
-     String mainWindow=driver.getWindowHandle();
+        String mainWindow = driver.getWindowHandle();
         helpBtn.click();
         privacyBtn.click();
         termsBtn.click();
